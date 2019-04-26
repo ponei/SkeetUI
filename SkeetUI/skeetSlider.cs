@@ -122,6 +122,7 @@ namespace SkeetUI
                     if (temp >= skeetValue)
                     {
                         skeetMax = value;
+
                         if (!DesignMode)
                         {
                             skeetValue = value; //temp, else skeetmin bugs out -- skeetvalue is only declared after
@@ -150,7 +151,7 @@ namespace SkeetUI
 
                 if (temp <= skeetMax)
                 {
-                    if (skeetValue >= temp || DesignMode)
+                    if (skeetValue >= temp)
                     {
                         skeetMin = value;
                         updateValue();
@@ -253,7 +254,7 @@ namespace SkeetUI
             double cords = (skeetValue - skeetMin) / coisinha;
 
             pnlSlider.BackgroundImage = drawSlider(pnlSliderBox, Convert.ToInt32(cords));
-            lbSliderValue.Location = new Point(Convert.ToInt32(cords) + 1, lbSliderValue.Location.Y);
+            lbSliderValue.Location = new Point(Convert.ToInt32(cords) + offsetValueSwitch(lbSliderValue.Text.Length), lbSliderValue.Location.Y);
         }
 
         public static void SetDoubleBuffered(System.Windows.Forms.Control c)
@@ -268,6 +269,21 @@ namespace SkeetUI
                         System.Reflection.BindingFlags.Instance);
 
             aProp.SetValue(c, true, null);
+        }
+
+        private int offsetValueSwitch(int i)
+        {
+            switch (i)
+            {
+                case 1:
+                    return 9;
+                case 2:
+                    return 5;
+                case 3:
+                    return 3;
+                default:
+                    return 1;
+            }
         }
 
         private Bitmap drawSlider(Control panel, int x)
@@ -321,7 +337,8 @@ namespace SkeetUI
         {
             Point cords = pnlSliderBox.PointToClient(Cursor.Position);
             pnlSlider.BackgroundImage = drawSlider(pnlSliderBox, cords.X);
-            lbSliderValue.Location = new Point(cords.X + 1, lbSliderValue.Location.Y);
+
+            lbSliderValue.Location = new Point(cords.X + offsetValueSwitch(lbSliderValue.Text.Length), lbSliderValue.Location.Y);
 
             double max = skeetMax;
             double min = skeetMin;
