@@ -29,8 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlSlider = new System.Windows.Forms.Panel();
-            this.lbTitleShadow = new SkeetUI.transparentLabel();
-            this.lbTitle = new SkeetUI.transparentLabel();
+            this.lbTitle = new SkeetUI.shadowLabel();
             this.pnlSliderBox = new transparentPanel();
             this.lbSliderValue = new SkeetUI.outlineLabel();
             this.pnlSlider.SuspendLayout();
@@ -47,29 +46,19 @@
             this.pnlSlider.Size = new System.Drawing.Size(158, 23);
             this.pnlSlider.TabIndex = 1;
             // 
-            // lbTitleShadow
-            // 
-            this.lbTitleShadow.Font = new System.Drawing.Font("Tahoma", 7.23F);
-            this.lbTitleShadow.ForeColor = System.Drawing.Color.Black;
-            this.lbTitleShadow.Location = new System.Drawing.Point(16, 2);
-            this.lbTitleShadow.Name = "lbTitleShadow";
-            this.lbTitleShadow.Size = new System.Drawing.Size(127, 13);
-            this.lbTitleShadow.TabIndex = 4;
-            this.lbTitleShadow.TabStop = false;
-            this.lbTitleShadow.Text = "skeetSlider";
-            this.lbTitleShadow.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            // 
             // lbTitle
             // 
+            this.lbTitle.AutoSize = true;
+            this.lbTitle.EnableShadow = true;
             this.lbTitle.Font = new System.Drawing.Font("Tahoma", 7.23F);
             this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
-            this.lbTitle.Location = new System.Drawing.Point(15, 1);
+            this.lbTitle.Location = new System.Drawing.Point(15, 2);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(127, 13);
-            this.lbTitle.TabIndex = 3;
-            this.lbTitle.TabStop = false;
+            this.lbTitle.ShadowColor = System.Drawing.Color.Black;
+            this.lbTitle.ShadowOffset = 1;
+            this.lbTitle.Size = new System.Drawing.Size(53, 12);
+            this.lbTitle.TabIndex = 7;
             this.lbTitle.Text = "skeetSlider";
-            this.lbTitle.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             // 
             // pnlSliderBox
             // 
@@ -98,7 +87,6 @@
             // skeetSlider
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.Controls.Add(this.lbTitleShadow);
             this.Controls.Add(this.lbTitle);
             this.Controls.Add(this.pnlSlider);
             this.Font = new System.Drawing.Font("Verdana", 7.5F, System.Drawing.FontStyle.Bold);
@@ -108,6 +96,7 @@
             this.pnlSlider.ResumeLayout(false);
             this.pnlSlider.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -115,9 +104,8 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel pnlSlider;
-        private transparentLabel lbTitle;
-        private transparentLabel lbTitleShadow;
         private outlineLabel lbSliderValue;
         private transparentPanel pnlSliderBox;
+        private shadowLabel lbTitle;
     }
 }

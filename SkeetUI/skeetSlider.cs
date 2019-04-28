@@ -31,18 +31,18 @@ namespace SkeetUI
                 Color text = Color.FromArgb(190, 190, 190);
                 if (value == true)
                 {
-                    lbTitleShadow.ForeColor = text;
                     lbTitle.ForeColor = shadow;
+                    lbTitle.ShadowColor = text;
                 }
                 else
                 {
-                    lbTitleShadow.ForeColor = shadow;
                     lbTitle.ForeColor = text;
+                    lbTitle.ShadowColor = shadow;
                 }
             }
         }
         [Description("Show title above slider"), Category("SkeetUI - Texts"), DefaultValue(true)]
-        public bool ShowTitle { get { return skeetShowTitle; } set { skeetShowTitle = value; lbTitle.Visible = value; lbTitleShadow.Visible = value; } }
+        public bool ShowTitle { get { return skeetShowTitle; } set { skeetShowTitle = value; lbTitle.Visible = value; } }
         [Description("Text of the title"), Category("SkeetUI - Texts"), DefaultValue("skeetSlider")]
         public string Title
         {
@@ -52,7 +52,6 @@ namespace SkeetUI
                 if (!string.IsNullOrEmpty(value))
                     skeetTitle = value;
                 lbTitle.Text = skeetTitle;
-                lbTitleShadow.Text = skeetTitle;
             }
         }
         [Description("Show value of the slider beside it"), Category("SkeetUI - Texts"), DefaultValue(true)]
@@ -222,14 +221,12 @@ namespace SkeetUI
                 int temp = textSize.Width / 2;
                 pnlSliderBox.Location = new Point(temp, pnlSliderBox.Location.Y);
                 lbTitle.Location = new Point(temp + 1, lbTitle.Location.Y);
-                lbTitleShadow.Location = new Point(temp + 2, lbTitleShadow.Location.Y);
                 offset = temp;
             }
             else
             {
                 offset = 15;
                 pnlSliderBox.Location = new Point(15, 0);
-                lbTitleShadow.Location = new Point(16, 2);
                 lbTitle.Location = new Point(15, 1);
             }
 
