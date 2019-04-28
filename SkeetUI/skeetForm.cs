@@ -267,8 +267,11 @@ namespace SkeetUI
 
                 g.InterpolationMode = InterpolationMode.Bilinear;
                 g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
-                g.DrawImage(gradientUpline, 7, 7, background.Width - 7, 1);
-                g.DrawImage(gradientDownline, 7, 8, background.Width - 7, 1);
+                if (skeetGradient)
+                {
+                    g.DrawImage(gradientUpline, 7, 7, background.Width - 7, 1);
+                    g.DrawImage(gradientDownline, 7, 8, background.Width - 7, 1);
+                }
 
                 g.InterpolationMode = InterpolationMode.Bilinear;
                 g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Default;
