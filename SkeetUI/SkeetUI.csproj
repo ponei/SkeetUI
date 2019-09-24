@@ -50,6 +50,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="skeetButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="skeetButton.Designer.cs">
+      <DependentUpon>skeetButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="skeetCheckbox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="skeetCheckbox.Designer.cs">
+      <DependentUpon>skeetCheckbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="skeetGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="skeetGroupBox.Designer.cs">
+      <DependentUpon>skeetGroupBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="skeetSlider.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -72,6 +90,15 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="skeetButton.resx">
+      <DependentUpon>skeetButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="skeetCheckbox.resx">
+      <DependentUpon>skeetCheckbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="skeetGroupBox.resx">
+      <DependentUpon>skeetGroupBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="skeetSlider.resx">
       <DependentUpon>skeetSlider.cs</DependentUpon>

@@ -238,6 +238,7 @@ namespace SkeetUI
         public skeetSlider()
         {
             InitializeComponent();
+            DoubleBuffered = true;
             SetDoubleBuffered(pnlSlider);
             updateColor();
             updateValue();
