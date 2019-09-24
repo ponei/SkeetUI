@@ -26,7 +26,7 @@ After that, your form should look like this:
 
 ## Installing
 The Nuget Package is only updated with large releases - make sure to use the binary from here to have the latest SkeetUI.
-Use this commands in Package Manager console to install SkeetUI manually (v1.0):
+Use this commands in Package Manager console to install SkeetUI manually (v1.0.3):
 ```
 Install-Package SkeetUI
 ```
