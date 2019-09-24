@@ -1,3 +1,7 @@
 
 SkeetUI/SkeetUI.nuspec
 SkeetUI/SkeetUI.1.0.3.nupkg
+*.dll
+SkeetUI/bin/*
+SkeetUI/obj/*
+.vs/*
