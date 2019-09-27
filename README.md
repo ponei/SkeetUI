@@ -1,3 +1,5 @@
+[![HitCount](http://hits.dwyl.io/ponei/SkeetUI.svg)](http://hits.dwyl.io/ponei/SkeetUI) [![Maintainability](https://api.codeclimate.com/v1/badges/b0e7661df4571dbd8318/maintainability)](https://codeclimate.com/github/ponei/SkeetUI/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/b0e7661df4571dbd8318/test_coverage)](https://codeclimate.com/github/ponei/SkeetUI/test_coverage)
+
 # SkeetUI
 .NET controls for WinForms with Skeet design
 
@@ -18,11 +20,11 @@ After that, your form should look like this:
 ### GroupBox
 ![GroupBox Screenshot](https://i.imgur.com/ayXh2wo.png)
 
-### Button
-![Button Screenshot](https://i.imgur.com/9KcWTgA.png)
-
 ### CheckBox
-![CheckBox Screenshot](https://i.imgur.com/7xPBJ0p.png)
+![CheckBox Screenshot](https://i.imgur.com/9KcWTgA.png)
+
+### Button
+![Button Screenshot](https://i.imgur.com/7xPBJ0p.png)
 
 ## Installing
 The Nuget Package is only updated with large releases - make sure to use the binary from here to have the latest SkeetUI.
