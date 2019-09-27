@@ -1,4 +1,4 @@
-[![HitCount](http://hits.dwyl.io/ponei/SkeetUI.svg)](http://hits.dwyl.io/ponei/SkeetUI) [![Maintainability](https://api.codeclimate.com/v1/badges/b0e7661df4571dbd8318/maintainability)](https://codeclimate.com/github/ponei/SkeetUI/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/b0e7661df4571dbd8318/test_coverage)](https://codeclimate.com/github/ponei/SkeetUI/test_coverage)
+[![HitCount](http://hits.dwyl.io/ponei/SkeetUI.svg)](http://hits.dwyl.io/ponei/SkeetUI) [![Maintainability](https://api.codeclimate.com/v1/badges/b0e7661df4571dbd8318/maintainability)](https://codeclimate.com/github/ponei/SkeetUI/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/b0e7661df4571dbd8318/test_coverage)](https://codeclimate.com/github/ponei/SkeetUI/test_coverage) [![Build Status](https://travis-ci.org/ponei/SkeetUI.svg?branch=master)](https://travis-ci.org/ponei/SkeetUI)
 
 # SkeetUI
 .NET controls for WinForms with Skeet design
