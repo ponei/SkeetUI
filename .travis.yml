@@ -1,2 +1,7 @@
 language: csharp
 solution: SkeetUI.sln
+
+# safelist
+branches:
+  only:
+  - master
