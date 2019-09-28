@@ -153,20 +153,12 @@ namespace SkeetUI
         public static extern bool ReleaseCapture();
         #endregion
 
-        private UITheme skeetTheme = UITheme.DARK;
-        public enum UITheme
-        {
-            DARK,
-            LIGHT
-        }
         private bool skeetResizable = false;
         private bool skeetGradient = true;
         private Color skeetGradient1 = Color.FromArgb(55, 177, 218);
         private Color skeetGradient2 = Color.FromArgb(204, 91, 184);
         private Color skeetGradient3 = Color.FromArgb(204, 227, 53);
 
-        [Description("Theme of the form"), Category("SkeetUI - Form"), DefaultValue(null)]
-        public UITheme Theme { get { return skeetTheme; } set { skeetTheme = value; drawTheme(); } }
         [Description("If form is resizable"), Category("SkeetUI - Form"), DefaultValue(false)]
         public bool Resizable { get { return skeetResizable; } set { skeetResizable = value; } }
         [Description("If gradient line is drawn"), Category("SkeetUI - Form"), DefaultValue(true)]
@@ -229,30 +221,9 @@ namespace SkeetUI
             gradientDownline.SetPixel(2, 0, changeColorBrightness(skeetGradient3, -0.5f));
         }
 
-        private Color offsetColor(UITheme type, int offset)
+        private Color offsetColor(int offset)
         {
-            switch (type)
-            {
-                case UITheme.DARK:
-                    return Color.FromArgb(0 + offset, 0 + offset, 0 + offset);
-                case UITheme.LIGHT:
-                    return Color.FromArgb(240 - offset, 240 - offset, 240 - offset);
-                default:
-                    return Color.Black;
-            }
-        }
-
-        private Color offsetColor(UITheme type, int offsetR, int offsetG, int offsetB)
-        {
-            switch (type)
-            {
-                case UITheme.DARK:
-                    return Color.FromArgb(0 + offsetR, 0 + offsetG, 0 + offsetB);
-                case UITheme.LIGHT:
-                    return Color.FromArgb(240 - offsetR, 240 - offsetG, 240 - offsetB);
-                default:
-                    return Color.Black;
-            }
+            return Color.FromArgb(0 + offset, 0 + offset, 0 + offset);
         }
 
         public void drawTheme()
@@ -261,7 +232,7 @@ namespace SkeetUI
 
             using (Graphics g = Graphics.FromImage(background))
             {
-                g.Clear(offsetColor(skeetTheme, 17));
+                g.Clear(offsetColor(17));
 
                 Pen cpen;
 
@@ -275,23 +246,23 @@ namespace SkeetUI
 
                 g.InterpolationMode = InterpolationMode.Bilinear;
                 g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Default;
-                cpen = new Pen(new SolidBrush(offsetColor(skeetTheme, 0)));
+                cpen = new Pen(new SolidBrush(offsetColor(0)));
                 g.DrawRectangle(cpen, 0, 0, background.Width - 1, background.Height - 1);
 
-                cpen = new Pen(new SolidBrush(offsetColor(skeetTheme, 56)));
+                cpen = new Pen(new SolidBrush(offsetColor(56)));
                 g.DrawRectangle(cpen, 1, 1, background.Width - 3, background.Height - 3);
 
-                cpen = new Pen(new SolidBrush(offsetColor(skeetTheme, 43)));
+                cpen = new Pen(new SolidBrush(offsetColor(43)));
                 g.DrawRectangle(cpen, 2, 2, background.Width - 5, background.Height - 5);
 
-                cpen = new Pen(new SolidBrush(offsetColor(skeetTheme, 40)));
+                cpen = new Pen(new SolidBrush(offsetColor(40)));
                 g.DrawRectangle(cpen, 3, 3, background.Width - 7, background.Height - 7);
                 g.DrawRectangle(cpen, 4, 4, background.Width - 9, background.Height - 9);
 
-                cpen = new Pen(new SolidBrush(offsetColor(skeetTheme, 43)));
+                cpen = new Pen(new SolidBrush(offsetColor(43)));
                 g.DrawRectangle(cpen, 5, 5, background.Width - 11, background.Height - 11);
 
-                cpen = new Pen(new SolidBrush(offsetColor(skeetTheme, 52)));
+                cpen = new Pen(new SolidBrush(offsetColor(52)));
                 g.DrawRectangle(cpen, 6, 6, background.Width - 13, background.Height - 13);
                 //g.DrawImage(gradientline, 7, 7, background.Width - 14, 1);
 
