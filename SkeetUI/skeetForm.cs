@@ -162,7 +162,7 @@ namespace SkeetUI
         [Description("If form is resizable"), Category("SkeetUI - Form"), DefaultValue(false)]
         public bool Resizable { get { return skeetResizable; } set { skeetResizable = value; } }
         [Description("If gradient line is drawn"), Category("SkeetUI - Form"), DefaultValue(true)]
-        public bool GradientLine { get { return skeetGradient; } set { skeetGradient = value; } }
+        public bool GradientLine { get { return skeetGradient; } set { skeetGradient = value; drawGradient(); drawTheme(); } }
         [Description("First color of the gradient"), Category("SkeetUI - Form"), DefaultValue(null)]
         public Color GradientColor1 { get { return skeetGradient1; } set { skeetGradient1 = value; drawGradient(); drawTheme(); } }
         [Description("Second color of the gradient"), Category("SkeetUI - Form"), DefaultValue(null)]
@@ -232,10 +232,44 @@ namespace SkeetUI
 
             using (Graphics g = Graphics.FromImage(background))
             {
-                g.Clear(offsetColor(17));
+                //background
+                g.Clear(offsetColor(22));
 
-                Pen cpen;
+                //chainmail
+                Bitmap chain = new Bitmap(4, Height);
+                //draw thing
+                using (Graphics gchain = Graphics.FromImage(chain))
+                {
+                    Pen penchain = new Pen(new SolidBrush(Color.FromArgb(12, 12, 12)));
+                    for (int i = 0; 1 >= i; i++)
+                    {
+                        bool outborder = false;
+                        int ydraw = 1 - (i * 2);
+                        int xdraw = 0 + (i * 2);
+                        while (!outborder)
+                        {
+                            if (!(ydraw > chain.Height))
+                            {
+                                gchain.DrawLine(penchain, xdraw, ydraw, xdraw, ydraw + 2);
+                                ydraw += 4;
+                            }
+                            else
+                            {
+                                outborder = true;
+                            }
+                        }
+                    }
+                }
+                //apply to form
+                int xform = 0;
+                g.CompositingMode = CompositingMode.SourceOver;
+                while (Width > xform)
+                {
+                    g.DrawImage(chain, new Point(xform, 0));
+                    xform += 4;
+                }
 
+                //gradient line
                 g.InterpolationMode = InterpolationMode.Bilinear;
                 g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Half;
                 if (skeetGradient)
@@ -244,9 +278,10 @@ namespace SkeetUI
                     g.DrawImage(gradientDownline, 7, 8, background.Width - 7, 1);
                 }
 
+                //border
                 g.InterpolationMode = InterpolationMode.Bilinear;
                 g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.Default;
-                cpen = new Pen(new SolidBrush(offsetColor(0)));
+                Pen cpen = new Pen(new SolidBrush(offsetColor(0)));
                 g.DrawRectangle(cpen, 0, 0, background.Width - 1, background.Height - 1);
 
                 cpen = new Pen(new SolidBrush(offsetColor(56)));
@@ -264,12 +299,24 @@ namespace SkeetUI
 
                 cpen = new Pen(new SolidBrush(offsetColor(52)));
                 g.DrawRectangle(cpen, 6, 6, background.Width - 13, background.Height - 13);
-                //g.DrawImage(gradientline, 7, 7, background.Width - 14, 1);
 
             }
 
             BackgroundImage = background;
         }
         #endregion
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // skeetForm
+            // 
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "skeetForm";
+            this.ResumeLayout(false);
+
+        }
     }
 }

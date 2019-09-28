@@ -62,6 +62,12 @@
     <Compile Include="skeetCheckbox.Designer.cs">
       <DependentUpon>skeetCheckbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="skeetComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="skeetComboBox.Designer.cs">
+      <DependentUpon>skeetComboBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="skeetGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -96,6 +102,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="skeetCheckbox.resx">
       <DependentUpon>skeetCheckbox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="skeetComboBox.resx">
+      <DependentUpon>skeetComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="skeetForm.resx">
+      <DependentUpon>skeetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="skeetGroupBox.resx">
       <DependentUpon>skeetGroupBox.cs</DependentUpon>

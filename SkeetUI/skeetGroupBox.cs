@@ -46,10 +46,18 @@ namespace SkeetUI
                     Pen cpen = new Pen(brush);
                     g.DrawRectangle(cpen, 0, 3, Width - 1, Height - 4);
                 }
+
+                //border in
                 using (Brush brush = new SolidBrush(Color.FromArgb(48, 48, 48)))
                 {
                     Pen cpen = new Pen(brush);
                     g.DrawRectangle(cpen, 1, 4, Width - 3, Height - 6);
+                }
+
+                //background
+                using (Brush brush = new SolidBrush(Color.FromArgb(17, 17, 17)))
+                {
+                    g.FillRectangle(brush, 2, 5, Width - 5, Height - 8);
                 }
 
                 if (!string.IsNullOrWhiteSpace(skeetTitle))
