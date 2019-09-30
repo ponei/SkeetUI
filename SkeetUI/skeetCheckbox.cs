@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace SkeetUI
 {
+    [DefaultEvent("Click")]
     public partial class skeetCheckbox : UserControl
     {
         #region parameters

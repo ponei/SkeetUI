@@ -11,6 +11,7 @@ using System.Drawing.Drawing2D;
 
 namespace SkeetUI
 {
+    [DefaultEvent("Click")]
     public partial class skeetButton : UserControl
     {
         #region parameters
