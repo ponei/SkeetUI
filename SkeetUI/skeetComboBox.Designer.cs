@@ -32,10 +32,10 @@
             // 
             // skeetComboBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "skeetComboBox";
             this.Size = new System.Drawing.Size(127, 20);
+            this.Click += new System.EventHandler(this.skeetComboBox_Click);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.skeetComboBox_MouseMove);
+            this.Resize += new System.EventHandler(this.skeetComboBox_Resize);
             this.ResumeLayout(false);
 
         }
