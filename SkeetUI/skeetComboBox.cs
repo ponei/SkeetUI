@@ -16,6 +16,7 @@ namespace SkeetUI
         #region paramenters
         private string[] skeetItems = { "skeetItem1", "skeetItem2" };
         private int skeetIndex = 0;
+        private Color skeetColor = Color.FromArgb(154, 197, 39);
 
 
 
@@ -26,6 +27,10 @@ namespace SkeetUI
             set
             {
                 skeetItems = value;
+                if (skeetIndex == value.Length)
+                {
+                    skeetIndex = value.Length - 1;
+                }
                 while (skeetItems != value) { }
                 drawBox(boxOpen);
             }
@@ -131,7 +136,7 @@ namespace SkeetUI
             Height = originalH;
         }
 
-        private void drawBoxOpen(int selected = -1)
+        private void drawBoxOpen(int over = -1)
         {
             if (skeetItems.Length > 0)
             {
@@ -177,11 +182,44 @@ namespace SkeetUI
                         Font drawf = new Font("Tahoma", 7, FontStyle.Regular);
                         g.DrawString(skeetItems[skeetIndex], drawf, brush, 8, 5);
                     }
+
+                    //texts
+                    if (skeetItems.Length > 0)
+                    {
+                        Brush preto = new SolidBrush(Color.Black);
+                        Brush branco = new SolidBrush(Color.White);
+                        Brush colorSelect = new SolidBrush(skeetColor);
+
+                        Font drawr = new Font("Tahoma", 7, FontStyle.Regular);
+                        Font drawb = new Font("Tahoma", 7, FontStyle.Bold);
+
+                        for (int i = 0; skeetItems.Length > i; i++)
+                        {
+                            if (i == skeetIndex)
+                            {
+                                g.DrawString(skeetItems[i], drawb, preto, 9, 25 + (i * 18)); //shadow
+                                g.DrawString(skeetItems[i], drawb, colorSelect, 8, 24 + (i * 18)); //text
+                            }
+                            else
+                            if (i != skeetIndex && i == over)
+                            {
+                                g.DrawString(skeetItems[i], drawb, preto, 9, 25 + (i * 18)); //shadow
+                                g.DrawString(skeetItems[i], drawb, branco, 8, 24 + (i * 18)); //text
+                            }
+                            else
+                            {
+                                g.DrawString(skeetItems[i], drawr, preto, 9, 25 + (i * 18)); //shadow
+                                g.DrawString(skeetItems[i], drawr, branco, 8, 24 + (i * 18)); //text
+                            }
+
+                        }
+                    }
                 }
 
                 BackgroundImage = background;
                 Height = originalH + (18 * skeetItems.Length);
-            } else
+            }
+            else
             {
                 drawBoxClosed();
             }
@@ -200,12 +238,26 @@ namespace SkeetUI
         private void skeetComboBox_Click(object sender, EventArgs e)
         {
             boxOpen = !boxOpen;
+            skeetIndex = overIndex;
+
             drawBox(boxOpen);
         }
 
+        int overIndex = 0;
         private void skeetComboBox_MouseMove(object sender, MouseEventArgs e)
         {
+            if (e.Location.Y > 20)
+            {
+                int y = (e.Location.Y - 20) / 18;
+                overIndex = y;
 
+                drawBoxOpen(y);
+            }
+            else
+            {
+                overIndex = skeetIndex;
+                drawBoxOpen();
+            }
         }
     }
 }
