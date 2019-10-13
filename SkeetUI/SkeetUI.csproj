@@ -62,8 +62,14 @@
     <Compile Include="skeetCheckbox.Designer.cs">
       <DependentUpon>skeetCheckbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="skeetColorPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="skeetColorPicker.Designer.cs">
+      <DependentUpon>skeetColorPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="skeetComboBox.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="skeetComboBox.Designer.cs">
       <DependentUpon>skeetComboBox.cs</DependentUpon>
@@ -73,6 +79,12 @@
     </Compile>
     <Compile Include="skeetGroupBox.Designer.cs">
       <DependentUpon>skeetGroupBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="skeetListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="skeetListBox.Designer.cs">
+      <DependentUpon>skeetListBox.cs</DependentUpon>
     </Compile>
     <Compile Include="skeetSlider.cs">
       <SubType>UserControl</SubType>
