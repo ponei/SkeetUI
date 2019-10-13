@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.pnlSlider = new System.Windows.Forms.Panel();
-            this.lbTitle = new SkeetUI.shadowLabel();
             this.pnlSliderBox = new transparentPanel();
             this.lbSliderValue = new SkeetUI.outlineLabel();
+            this.lbTitle = new SkeetUI.shadowLabel();
             this.pnlSlider.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,20 +46,6 @@
             this.pnlSlider.Size = new System.Drawing.Size(158, 23);
             this.pnlSlider.TabIndex = 1;
             // 
-            // lbTitle
-            // 
-            this.lbTitle.AutoSize = true;
-            this.lbTitle.EnableShadow = true;
-            this.lbTitle.Font = new System.Drawing.Font("Tahoma", 7.23F);
-            this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
-            this.lbTitle.Location = new System.Drawing.Point(15, 2);
-            this.lbTitle.Name = "lbTitle";
-            this.lbTitle.ShadowColor = System.Drawing.Color.Black;
-            this.lbTitle.ShadowOffset = 1;
-            this.lbTitle.Size = new System.Drawing.Size(53, 12);
-            this.lbTitle.TabIndex = 7;
-            this.lbTitle.Text = "skeetSlider";
-            // 
             // pnlSliderBox
             // 
             this.pnlSliderBox.BackColor = System.Drawing.Color.Fuchsia;
@@ -68,7 +54,9 @@
             this.pnlSliderBox.Size = new System.Drawing.Size(128, 8);
             this.pnlSliderBox.TabIndex = 6;
             this.pnlSliderBox.Click += new System.EventHandler(this.pnlSliderBox_Click);
+       
             this.pnlSliderBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnlSliderBox_MouseMove);
+        
             // 
             // lbSliderValue
             // 
@@ -84,6 +72,20 @@
             this.lbSliderValue.Text = "1.523";
             this.lbSliderValue.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // lbTitle
+            // 
+            this.lbTitle.AutoSize = true;
+            this.lbTitle.EnableShadow = true;
+            this.lbTitle.Font = new System.Drawing.Font("Tahoma", 7.23F);
+            this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
+            this.lbTitle.Location = new System.Drawing.Point(15, 2);
+            this.lbTitle.Name = "lbTitle";
+            this.lbTitle.ShadowColor = System.Drawing.Color.Black;
+            this.lbTitle.ShadowOffset = 1;
+            this.lbTitle.Size = new System.Drawing.Size(53, 12);
+            this.lbTitle.TabIndex = 7;
+            this.lbTitle.Text = "skeetSlider";
+            // 
             // skeetSlider
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
@@ -92,6 +94,7 @@
             this.Font = new System.Drawing.Font("Verdana", 7.5F, System.Drawing.FontStyle.Bold);
             this.Name = "skeetSlider";
             this.Size = new System.Drawing.Size(158, 40);
+            
             this.Resize += new System.EventHandler(this.skeetSlider_Resize);
             this.pnlSlider.ResumeLayout(false);
             this.pnlSlider.PerformLayout();

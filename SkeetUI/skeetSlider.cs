@@ -371,9 +371,8 @@ namespace SkeetUI
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (pnlSliderBox.ClientRectangle.Contains(pnlSliderBox.PointToClient(Control.MousePosition)))
+                if (pnlSliderBox.ClientRectangle.Contains(new Point(pnlSliderBox.PointToClient(Control.MousePosition).X, 0)))
                 {
-
                     pnlClick();
                 }
             }
