@@ -8,17 +8,29 @@ namespace SkeetUI
 {
     public class outlineLabel : Label
     {
+
+
         //sources:    
         //https://stackoverflow.com/questions/19842722/setting-a-font-with-outline-color-in-c-sharp - label outline
         public outlineLabel()
         {
+            SetStyle(ControlStyles.DoubleBuffer, true);
+
+            SetStyle(ControlStyles.ResizeRedraw, true);
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+
+            SetStyle(ControlStyles.UserPaint, true);
             OutlineForeColor = Color.Green;
             OutlineWidth = 1.5f;
         }
         public Color OutlineForeColor { get; set; }
         public float OutlineWidth { get; set; }
+
+
         protected override void OnPaint(PaintEventArgs e)
         {
+            
             e.Graphics.FillRectangle(new SolidBrush(BackColor), ClientRectangle);
             using (GraphicsPath gp = new GraphicsPath())
             using (Pen outline = new Pen(OutlineForeColor, OutlineWidth)
@@ -33,6 +45,7 @@ namespace SkeetUI
                 e.Graphics.DrawPath(outline, gp);
                 e.Graphics.FillPath(foreBrush, gp);
             }
+            
         }
     }
 }
