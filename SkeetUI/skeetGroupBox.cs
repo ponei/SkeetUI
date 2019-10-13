@@ -16,7 +16,7 @@ namespace SkeetUI
         private string skeetTitle = "skeetGroupBox";
 
         [Description("Title that is drawn on the box"), Category("SkeetUI - GroupBox"), DefaultValue("")]
-        public string ButtonText
+        public string TitleText
         {
             get { return skeetTitle; }
             set
