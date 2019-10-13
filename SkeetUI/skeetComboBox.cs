@@ -27,7 +27,7 @@ namespace SkeetUI
             set
             {
                 skeetItems = value;
-                if (skeetIndex == value.Length)
+                if (skeetIndex >= value.Length)
                 {
                     skeetIndex = value.Length - 1;
                 }
@@ -47,6 +47,17 @@ namespace SkeetUI
             }
         }
 
+        [Description("Selected item color"), Category("SkeetUI - ComboBox"), DefaultValue("")]
+        public Color selectedColor
+        {
+            get { return skeetColor; }
+            set
+            {
+                skeetColor = value;
+                drawBox(boxOpen);
+            }
+        }
+
         #endregion
         public skeetComboBox()
         {
@@ -57,6 +68,12 @@ namespace SkeetUI
 
             drawArrows();
             drawBox(boxOpen);
+
+
+            if (!DesignMode)
+            {
+
+            }
         }
 
         #region draw
@@ -86,17 +103,43 @@ namespace SkeetUI
 
         }
 
+        private Control parentInternal;
+        private int parentIndex = -1;
+        private Point locationInternal;
 
-
+        int change = 1; //1 = close, 2 = open
         private void drawBox(bool status)
         {
             if (status)
             {
                 drawBoxOpen();
+                //go to the back control to break out of bounds
+                if (change == 1 && Parent.Parent != null)
+                {
+                    change = 2;
+                    if (parentIndex == -1)
+                    {
+                        parentIndex = Parent.Controls.IndexOf(this);
+                    }
+                    parentInternal = Parent;
+                    locationInternal = Location;
+                    Parent = Parent.Parent;
+                    Location = new Point(Location.X + (parentInternal.Location.X), Location.Y + (parentInternal.Location.Y));
+                    BringToFront();
+                }
             }
             else
             {
                 drawBoxClosed();
+                //bring back to original control
+                if (change == 2 && parentInternal != null)
+                {
+                    change = 1;
+
+                    Parent = parentInternal;
+                    Parent.Controls.SetChildIndex(this, parentIndex);
+                    Location = locationInternal;
+                }
             }
         }
 
@@ -157,16 +200,11 @@ namespace SkeetUI
                         g.FillRectangle(brush, rc);
                     }
 
-                    //border out 2° box
-                    using (Brush brush = new SolidBrush(Color.FromArgb(10, 10, 10)))
-                    {
-                        Pen cpen = new Pen(brush);
-                        g.DrawRectangle(cpen, 0, originalH, Width - 1, 18 * skeetItems.Length - 1);
-                    }
+                    //border out 2° box -- we skip for now, is called at the end
 
                     //gradient in 2° box
                     rc = new Rectangle(1, 1 + originalH, Width - 2, 18 * skeetItems.Length - 2);
-                    using (LinearGradientBrush brush = new LinearGradientBrush(rc, Color.FromArgb(31, 31, 31), Color.FromArgb(36, 36, 36), 90F))
+                    using (Brush brush = new SolidBrush(Color.FromArgb(35, 35, 35)))
                     {
                         g.FillRectangle(brush, rc);
                     }
@@ -187,8 +225,10 @@ namespace SkeetUI
                     if (skeetItems.Length > 0)
                     {
                         Brush preto = new SolidBrush(Color.Black);
-                        Brush branco = new SolidBrush(Color.White);
+                        Brush branco = new SolidBrush(Color.FromArgb(208, 208, 208));
                         Brush colorSelect = new SolidBrush(skeetColor);
+                        Brush selectBackground = new SolidBrush(Color.FromArgb(26, 26, 26));
+                        Brush hoverBackground = new SolidBrush(Color.FromArgb(32, 32, 32));
 
                         Font drawr = new Font("Tahoma", 7, FontStyle.Regular);
                         Font drawb = new Font("Tahoma", 7, FontStyle.Bold);
@@ -197,12 +237,14 @@ namespace SkeetUI
                         {
                             if (i == skeetIndex)
                             {
+                                g.FillRectangle(selectBackground, new Rectangle(1, 21 + (i * 18), Width - 2, 18));
                                 g.DrawString(skeetItems[i], drawb, preto, 9, 25 + (i * 18)); //shadow
                                 g.DrawString(skeetItems[i], drawb, colorSelect, 8, 24 + (i * 18)); //text
                             }
                             else
                             if (i != skeetIndex && i == over)
                             {
+                                g.FillRectangle(hoverBackground, new Rectangle(1, 21 + (i * 18), Width - 2, 18));
                                 g.DrawString(skeetItems[i], drawb, preto, 9, 25 + (i * 18)); //shadow
                                 g.DrawString(skeetItems[i], drawb, branco, 8, 24 + (i * 18)); //text
                             }
@@ -213,6 +255,13 @@ namespace SkeetUI
                             }
 
                         }
+                    }
+
+                    //border out 2° box -- hide some imperfections
+                    using (Brush brush = new SolidBrush(Color.FromArgb(10, 10, 10)))
+                    {
+                        Pen cpen = new Pen(brush);
+                        g.DrawRectangle(cpen, 0, originalH, Width - 1, 18 * skeetItems.Length - 1);
                     }
                 }
 
@@ -237,26 +286,28 @@ namespace SkeetUI
 
         private void skeetComboBox_Click(object sender, EventArgs e)
         {
-            boxOpen = !boxOpen;
-            skeetIndex = overIndex;
+            MouseEventArgs enew = (MouseEventArgs)e;
+            if (enew.Location.Y > 20)
+            {
+                skeetIndex = (enew.Location.Y - 20) / 18;
+                drawBox(boxOpen);
+            }
+            else
+            {
+                boxOpen = !boxOpen;
+                drawBox(boxOpen);
+            }
 
-            drawBox(boxOpen);
+
+
         }
 
-        int overIndex = 0;
         private void skeetComboBox_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Location.Y > 20)
             {
                 int y = (e.Location.Y - 20) / 18;
-                overIndex = y;
-
                 drawBoxOpen(y);
-            }
-            else
-            {
-                overIndex = skeetIndex;
-                drawBoxOpen();
             }
         }
     }
