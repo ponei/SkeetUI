@@ -63,10 +63,6 @@ namespace SkeetUI
 
                 //border in
                 Color inborder = Color.FromArgb(50, 50, 50);
-                if (hovering)
-                {
-                    inborder = Color.FromArgb(65, 65, 65);
-                }
                 using (Brush brush = new SolidBrush(inborder))
                 {
                     Pen cpen = new Pen(brush);
@@ -75,10 +71,21 @@ namespace SkeetUI
 
                 //background, gradient
                 Rectangle rc = new Rectangle(2, 2, Width - 4, Height - 4);
-                using (LinearGradientBrush brush = new LinearGradientBrush(rc, Color.FromArgb(35, 35, 35), Color.FromArgb(25, 25, 25), 90F))
+                LinearGradientBrush brushgrad = null;
+                if (down)
                 {
-                    g.FillRectangle(brush, rc);
+                    brushgrad = new LinearGradientBrush(rc, Color.FromArgb(30, 30 ,30), Color.FromArgb(20, 20, 20), 90F);
                 }
+                else if (hovering)
+                {
+                    brushgrad = new LinearGradientBrush(rc, Color.FromArgb(40, 40, 40), Color.FromArgb(30, 30, 30), 90F);
+                } else
+                {
+                    brushgrad = new LinearGradientBrush(rc, Color.FromArgb(35, 35, 35), Color.FromArgb(25, 25, 25), 90F);
+                }
+
+                 g.FillRectangle(brushgrad, rc);
+                
 
                 //text in the middle
                 Rectangle rcd = new Rectangle(0, 0, Width, Height);
@@ -109,12 +116,14 @@ namespace SkeetUI
         }
 
         bool hovering = false;
+        bool down = false;
         private void skeetButton_MouseEnter(object sender, EventArgs e)
         {
             if (!skeetEnabled)
             {
                 return;
             }
+
             hovering = true;
             drawButton();
         }
@@ -125,6 +134,7 @@ namespace SkeetUI
             {
                 return;
             }
+
             hovering = false;
             drawButton();
         }
@@ -136,6 +146,28 @@ namespace SkeetUI
                 return;
             }
             base.OnClick(e);
+        }
+
+        private void skeetButton_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!skeetEnabled)
+            {
+                return;
+            }
+
+            down = true;
+            drawButton();
+        }
+
+        private void skeetButton_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (!skeetEnabled)
+            {
+                return;
+            }
+
+            down = false;
+            drawButton();
         }
     }
 }

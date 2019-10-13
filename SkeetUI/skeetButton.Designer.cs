@@ -36,8 +36,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "skeetButton";
             this.Size = new System.Drawing.Size(139, 40);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.skeetButton_MouseDown);
             this.MouseEnter += new System.EventHandler(this.skeetButton_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.skeetButton_MouseLeave);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.skeetButton_MouseUp);
             this.Resize += new System.EventHandler(this.skeetButton_Resize);
             this.ResumeLayout(false);
 
