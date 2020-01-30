@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SkeetUI
@@ -39,7 +34,7 @@ namespace SkeetUI
                 drawCheckbox();
             }
         }
-        [Description("Color of checkbox when checked"), Category("SkeetUI - Checkbox"), DefaultValue("")]
+        [Description("Title of the checkbox"), Category("SkeetUI - Checkbox"), DefaultValue("")]
         public string CheckBoxTitle
         {
             get { return skeetTitle; }
@@ -47,7 +42,6 @@ namespace SkeetUI
             {
                 skeetTitle = value;
                 shadowLabel.Text = skeetTitle;
-                Width = 8 + shadowLabel.Width + 13;
                 drawCheckbox();
             }
         }

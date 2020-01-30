@@ -68,6 +68,12 @@
     <Compile Include="skeetColorPicker.Designer.cs">
       <DependentUpon>skeetColorPicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="skeetColorPickerMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="skeetColorPickerMenu.Designer.cs">
+      <DependentUpon>skeetColorPickerMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="skeetComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -99,6 +105,15 @@
     <Compile Include="skeetForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="skeetTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="skeetTextBox.Designer.cs">
+      <DependentUpon>skeetTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tablessTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="transparentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -115,6 +130,12 @@
     <EmbeddedResource Include="skeetCheckbox.resx">
       <DependentUpon>skeetCheckbox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="skeetColorPicker.resx">
+      <DependentUpon>skeetColorPicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="skeetColorPickerMenu.resx">
+      <DependentUpon>skeetColorPickerMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="skeetComboBox.resx">
       <DependentUpon>skeetComboBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="skeetSlider.resx">
       <DependentUpon>skeetSlider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="skeetTextBox.resx">
+      <DependentUpon>skeetTextBox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

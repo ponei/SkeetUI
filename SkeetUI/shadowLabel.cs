@@ -1,8 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace SkeetUI
@@ -38,14 +36,16 @@ namespace SkeetUI
         private Color _shadowColor = Color.LightGray;
         private int _shadowOffset = 1;
 
+        bool designTime;
         public shadowLabel()
         {
-            SetStyle(ControlStyles.SupportsTransparentBackColor | ControlStyles.OptimizedDoubleBuffer, true);
+            designTime = (LicenseManager.UsageMode == LicenseUsageMode.Designtime);
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
         }
         /// <summary>
         ///     Sets the drawing direction
         /// </summary>
-        
+
         /// <summary>
         ///     Sets of the shadow
         /// </summary>
@@ -88,7 +88,17 @@ namespace SkeetUI
         /// <summary>
         ///     Enables the Gradient
         /// </summary>
-        
+
+        protected override void OnTextChanged(System.EventArgs args)
+        {
+            if (!designTime)
+            {
+                SetStyle(ControlStyles.UserPaint, true);
+            }
+            Refresh();
+
+        }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             if (_enableShadow)
@@ -127,6 +137,11 @@ namespace SkeetUI
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
+            }
+
+            if (!designTime)
+            {
+                SetStyle(ControlStyles.UserPaint, false);
             }
         }
         private static StringFormat ContentAlignmentToStringAlignment(ContentAlignment ca)

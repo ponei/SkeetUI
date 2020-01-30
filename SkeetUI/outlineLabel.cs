@@ -1,7 +1,5 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace SkeetUI
@@ -30,7 +28,7 @@ namespace SkeetUI
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            
+
             e.Graphics.FillRectangle(new SolidBrush(BackColor), ClientRectangle);
             using (GraphicsPath gp = new GraphicsPath())
             using (Pen outline = new Pen(OutlineForeColor, OutlineWidth)
@@ -45,7 +43,7 @@ namespace SkeetUI
                 e.Graphics.DrawPath(outline, gp);
                 e.Graphics.FillPath(foreBrush, gp);
             }
-            
+
         }
     }
 }

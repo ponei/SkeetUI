@@ -1,13 +1,13 @@
 ﻿namespace SkeetUI
 {
-    partial class skeetColorPicker
+    partial class skeetColorPickerMenu
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,7 +20,7 @@
             base.Dispose(disposing);
         }
 
-        #region Component Designer generated code
+        #region Windows Form Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -30,11 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // skeetColorPicker
+            // skeetColorPickerMenu
             // 
-            this.BackColor = System.Drawing.Color.Transparent;
-            this.Size = new System.Drawing.Size(18, 10);
-            this.Click += new System.EventHandler(this.skeetColorPicker_Click);
+            this.Size = new System.Drawing.Size(172, 172);
+            this.Text = "skeetColorPickerMenu";
+            this.Click += new System.EventHandler(this.skeetColorPickerMenu_Click);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.skeetColorPickerMenu_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.skeetColorPickerMenu_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.skeetColorPickerMenu_MouseUp);
             this.ResumeLayout(false);
 
         }

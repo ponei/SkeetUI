@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
 namespace SkeetUI
 {
     public partial class skeetComboBox : Panel
     {
         #region paramenters
-        private string[] skeetItems = { "skeetItem1", "skeetItem2" };
+        private string[] skeetItems = { };
         private int skeetIndex = 0;
         private Color skeetColor = Color.FromArgb(154, 197, 39);
 
@@ -68,12 +63,6 @@ namespace SkeetUI
 
             drawArrows();
             drawBox(boxOpen);
-
-
-            if (!DesignMode)
-            {
-
-            }
         }
 
         #region draw
@@ -125,7 +114,7 @@ namespace SkeetUI
                     locationInternal = Location;
                     Parent = Parent.Parent;
                     Location = new Point(Location.X + (parentInternal.Location.X), Location.Y + (parentInternal.Location.Y));
-                    BringToFront();
+                    Parent.Controls.SetChildIndex(this, 0);
                 }
             }
             else

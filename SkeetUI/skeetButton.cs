@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
 namespace SkeetUI
 {
@@ -74,18 +69,19 @@ namespace SkeetUI
                 LinearGradientBrush brushgrad = null;
                 if (down)
                 {
-                    brushgrad = new LinearGradientBrush(rc, Color.FromArgb(30, 30 ,30), Color.FromArgb(20, 20, 20), 90F);
+                    brushgrad = new LinearGradientBrush(rc, Color.FromArgb(30, 30, 30), Color.FromArgb(20, 20, 20), 90F);
                 }
                 else if (hovering)
                 {
                     brushgrad = new LinearGradientBrush(rc, Color.FromArgb(40, 40, 40), Color.FromArgb(30, 30, 30), 90F);
-                } else
+                }
+                else
                 {
                     brushgrad = new LinearGradientBrush(rc, Color.FromArgb(35, 35, 35), Color.FromArgb(25, 25, 25), 90F);
                 }
 
-                 g.FillRectangle(brushgrad, rc);
-                
+                g.FillRectangle(brushgrad, rc);
+
 
                 //text in the middle
                 Rectangle rcd = new Rectangle(0, 0, Width, Height);
