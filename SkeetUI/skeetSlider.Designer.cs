@@ -73,13 +73,10 @@
             // lbTitle
             // 
             this.lbTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbTitle.EnableShadow = true;
             this.lbTitle.Font = new System.Drawing.Font("Tahoma", 7.23F);
             this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
             this.lbTitle.Location = new System.Drawing.Point(15, 2);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.ShadowColor = System.Drawing.Color.Black;
-            this.lbTitle.ShadowOffset = 1;
             this.lbTitle.Size = new System.Drawing.Size(143, 12);
             this.lbTitle.TabIndex = 7;
             this.lbTitle.Text = "skeetSlider";

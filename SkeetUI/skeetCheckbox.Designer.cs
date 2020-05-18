@@ -35,13 +35,10 @@
             // 
             this.shadowLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.shadowLabel.EnableShadow = true;
             this.shadowLabel.Font = new System.Drawing.Font("Tahoma", 7.23F);
             this.shadowLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(190)))), ((int)(((byte)(190)))));
             this.shadowLabel.Location = new System.Drawing.Point(19, 1);
             this.shadowLabel.Name = "shadowLabel";
-            this.shadowLabel.ShadowColor = System.Drawing.Color.Black;
-            this.shadowLabel.ShadowOffset = 1;
             this.shadowLabel.Size = new System.Drawing.Size(72, 13);
             this.shadowLabel.TabIndex = 0;
             this.shadowLabel.Text = "skeetCheckbox";

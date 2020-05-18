@@ -10,32 +10,10 @@ namespace SkeetUI
     {
         #region parametros control
         private bool skeetShowTitle = true;
-        private bool invertTitleColor = false;
         private string skeetTitle = "skeetSlider";
         private bool skeetShowValue = true;
         private string skeetValueSuffix = "";
         private string skeetValuePrefix = "";
-        [Description("Inverts the ForeColor of the labels"), Category("SkeetUI - Texts"), DefaultValue(false)]
-        public bool InvertTitleColor
-        {
-            get { return invertTitleColor; }
-            set
-            {
-                invertTitleColor = value;
-                Color shadow = Color.Black;
-                Color text = Color.FromArgb(190, 190, 190);
-                if (value == true)
-                {
-                    lbTitle.ForeColor = shadow;
-                    lbTitle.ShadowColor = text;
-                }
-                else
-                {
-                    lbTitle.ForeColor = text;
-                    lbTitle.ShadowColor = shadow;
-                }
-            }
-        }
         [Description("Show title above slider"), Category("SkeetUI - Texts"), DefaultValue(true)]
         public bool ShowTitle { get { return skeetShowTitle; } set { skeetShowTitle = value; lbTitle.Visible = value; } }
         [Description("Text of the title"), Category("SkeetUI - Texts"), DefaultValue("skeetSlider")]
@@ -329,9 +307,6 @@ namespace SkeetUI
         private void pnlClick()
         {
             Point cords = pnlSliderBox.PointToClient(Cursor.Position);
-            pnlSlider.BackgroundImage = drawSlider(pnlSliderBox, cords.X);
-
-            lbSliderValue.Location = new Point(cords.X + offsetValueSwitch(lbSliderValue.Text.Length), lbSliderValue.Location.Y);
 
             double max = skeetMax;
             double min = skeetMin;
@@ -339,12 +314,16 @@ namespace SkeetUI
 
             int loc = cords.X;
             if (loc >= pnlSliderBox.Width - 2) { loc = pnlSliderBox.Width - 2; }
-            if (loc >= 0)
-            {
-                double value = min + (loc * add);
-                skeetValue = value;
-                lbSliderValue.Text = skeetValuePrefix + string.Format("{0:F" + skeetFormatLen + "}", skeetValue) + skeetValueSuffix;
-            }
+            if (0 > loc) { loc = 0; }
+
+            pnlSlider.BackgroundImage = drawSlider(pnlSliderBox, loc);
+
+            lbSliderValue.Location = new Point(loc + offsetValueSwitch(lbSliderValue.Text.Length), lbSliderValue.Location.Y);
+
+            double value = min + (loc * add);
+            skeetValue = value;
+            lbSliderValue.Text = skeetValuePrefix + string.Format("{0:F" + skeetFormatLen + "}", skeetValue) + skeetValueSuffix;
+
         }
 
         private void skeetSlider_Resize(object sender, EventArgs e)
@@ -354,11 +333,16 @@ namespace SkeetUI
             updateSlider();
         }
 
+        public event EventHandler sliderValueChanged;
         private void pnlSliderBox_Click(object sender, EventArgs e)
         {
             if (pnlSliderBox.ClientRectangle.Contains(pnlSliderBox.PointToClient(Control.MousePosition)))
             {
                 pnlClick();
+                if (sliderValueChanged != null)
+                {
+                    this.sliderValueChanged(this, e);
+                }
             }
         }
 
@@ -366,10 +350,13 @@ namespace SkeetUI
         {
             if (e.Button == MouseButtons.Left)
             {
-                if (pnlSliderBox.ClientRectangle.Contains(new Point(pnlSliderBox.PointToClient(Control.MousePosition).X, 0)))
+
+                pnlClick();
+                if (sliderValueChanged != null)
                 {
-                    pnlClick();
+                    this.sliderValueChanged(this, e);
                 }
+
             }
         }
     }

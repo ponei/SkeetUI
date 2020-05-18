@@ -299,5 +299,11 @@ namespace SkeetUI
                 drawBoxOpen(y);
             }
         }
+
+        private void skeetComboBox_MouseLeave(object sender, EventArgs e)
+        {
+            boxOpen = false;
+            drawBox(boxOpen);
+        }
     }
 }

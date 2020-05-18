@@ -1,6 +1,6 @@
 ﻿namespace SkeetUI
 {
-    partial class skeetComboBox
+    partial class skeetTabManager
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // skeetComboBox
+            // skeetTabManager
             // 
-            this.Size = new System.Drawing.Size(127, 20);
-            this.Click += new System.EventHandler(this.skeetComboBox_Click);
-            this.MouseLeave += new System.EventHandler(this.skeetComboBox_MouseLeave);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.skeetComboBox_MouseMove);
-            this.Resize += new System.EventHandler(this.skeetComboBox_Resize);
+            this.Size = new System.Drawing.Size(247, 274);
+            this.Click += new System.EventHandler(this.skeetTabManager_Click);
+            this.HandleCreated += new System.EventHandler(this.skeetTabManager_HandleCreated);
+            this.Move += new System.EventHandler(this.skeetTabManager_Move);
+            this.Resize += new System.EventHandler(this.skeetTabManager_Resize);
             this.ResumeLayout(false);
 
         }

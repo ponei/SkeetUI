@@ -52,7 +52,7 @@ namespace SkeetUI
                 //background
                 using (Brush brush = new SolidBrush(Color.FromArgb(17, 17, 17)))
                 {
-                    g.FillRectangle(brush, 2, 5, Width - 5, Height - 8);
+                    g.FillRectangle(brush, 2, 5, Width - 4, Height - 7);
                 }
 
                 if (!string.IsNullOrWhiteSpace(skeetTitle))

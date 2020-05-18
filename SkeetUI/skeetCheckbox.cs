@@ -9,6 +9,9 @@ namespace SkeetUI
     public partial class skeetCheckbox : UserControl
     {
         #region parameters
+        private skeetToolTip tt;
+        private string ttText;
+
         private string skeetTitle = "skeetCheckbox";
 
         private bool boxChecked = false;
@@ -43,6 +46,40 @@ namespace SkeetUI
                 skeetTitle = value;
                 shadowLabel.Text = skeetTitle;
                 drawCheckbox();
+            }
+        }
+
+        [Description("ToolTip of the checkbox"), Category("SkeetUI - Checkbox"), DefaultValue(null)]
+        public skeetToolTip ToolTip
+        {
+            get { return tt; }
+            set
+            {
+                if (value is skeetToolTip)
+                {
+                    tt = value;
+                }
+
+                if (tt != null && !string.IsNullOrWhiteSpace(ttText))
+                {
+                    tt.SetToolTip(this, ttText);
+                    tt.SetToolTip(shadowLabel, ttText);
+                }
+            }
+        }
+
+        [Description("Text of the ToolTip"), Category("SkeetUI - Checkbox"), DefaultValue(""), Editor("System.ComponentModel.Design.MultilineStringEditor, System.Design, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", typeof(System.Drawing.Design.UITypeEditor))]
+        public string ToolTipText
+        {
+            get { return ttText; }
+            set
+            {
+                ttText = value;
+                if (tt != null && !string.IsNullOrWhiteSpace(ttText))
+                {
+                    tt.SetToolTip(this, ttText);
+                    tt.SetToolTip(shadowLabel, ttText);
+                }
             }
         }
         #endregion
@@ -136,8 +173,7 @@ namespace SkeetUI
 
         private void shadowLabel_Click(object sender, EventArgs e)
         {
-            boxChecked = !boxChecked;
-            drawCheckbox();
+            OnClick(e);
         }
     }
 }

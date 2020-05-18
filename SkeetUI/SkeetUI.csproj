@@ -8,9 +8,10 @@
     <OutputType>Library</OutputType>
     <RootNamespace>SkeetUI</RootNamespace>
     <AssemblyName>SkeetUI</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -20,14 +21,20 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -80,6 +87,12 @@
     <Compile Include="skeetComboBox.Designer.cs">
       <DependentUpon>skeetComboBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="skeetTabManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="skeetTabManager.Designer.cs">
+      <DependentUpon>skeetTabManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="skeetGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -110,6 +123,9 @@
     </Compile>
     <Compile Include="skeetTextBox.Designer.cs">
       <DependentUpon>skeetTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="skeetToolTip.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="tablessTabControl.cs">
       <SubType>Component</SubType>
@@ -142,6 +158,9 @@
     <EmbeddedResource Include="skeetForm.resx">
       <DependentUpon>skeetForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="skeetTabManager.resx">
+      <DependentUpon>skeetTabManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="skeetGroupBox.resx">
       <DependentUpon>skeetGroupBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,9 +170,15 @@
     <EmbeddedResource Include="skeetTextBox.resx">
       <DependentUpon>skeetTextBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="tablessTabControl.resx">
+      <DependentUpon>tablessTabControl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Resource Include="Resources\badcache.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
